@@ -16,15 +16,15 @@ def _parseXML(root, deep = 0, max_deep = 30):
 		".text"	: root.text	,
 		".tags"	: set()
 	}
-	
+
 	for child in root:
 		tag = child.tag
 		if tag not in data[".tags"]:
 			data[".tags"].add(tag)
 			data[tag] = []
-			
-		data[tag].append( _parseXML(child), deep + 1 )
-	
+
+		data[tag].append( _parseXML(child, deep + 1) )
+
 	return data
 
 
